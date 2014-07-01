@@ -1,4 +1,5 @@
 import java.util.Iterator;
+import java.util.NoSuchElementException;
 public class Deque<Item> implements Iterable<Item> {
     private Node first = null;
     private Node last = null;
@@ -15,6 +16,9 @@ public class Deque<Item> implements Iterable<Item> {
         return size;
     }
     public void addFirst(Item item) {
+        if (item == null) {
+            throw new NullPointerException("Item can't be null.");
+        }
         Node oldfirst = first;
         first = new Node();
         first.item = item;
@@ -47,5 +51,12 @@ public class Deque<Item> implements Iterable<Item> {
             return item;
         }
     }
+     public static void main(String[] args) {
+         Deque<Integer> de=new Deque<Integer>();
+         for (int j=0; j<=5; j++) {
+             de.addFirst(j);
+         }
+         StdOut.println(de.size());
+     }
     
 }
